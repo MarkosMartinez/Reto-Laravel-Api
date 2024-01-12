@@ -23,4 +23,4 @@ RUN composer install --ignore-platform-reqs --no-scripts --no-plugins  --no-dev 
 EXPOSE 8000
 
 # Start the container running php /artisan serve
-CMD ["php", "/proyecto/artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD ["sh", "-c", "if php /proyecto/artisan migrate | grep -q 'Nothing to migrate'; then php artisan serve --host=0.0.0.0 --port=8000; else php /proyecto/artisan passport:install --force && php /proyecto/artisan serve --host=0.0.0.0 --port=8000; fi"]
