@@ -22,9 +22,8 @@ Route::POST('login', [RegisterController::class, 'login']);
 Route::middleware('auth:api')->group( function () {
     Route::GET('logout', [RegisterController::class, 'logout']);
     Route::GET('logoutall', [RegisterController::class, 'logoutall']);
-    Route::GET('tiempo-actual', [TiempoActualController::class, 'obtenerTiempo']);
     
-});
+});Route::GET('tiempo-actual', [TiempoActualController::class, 'obtenerTiempo']);
 Route::POST('comprobar-token', function () {
     return Auth::guard('api')->check() ? true : false;
 });

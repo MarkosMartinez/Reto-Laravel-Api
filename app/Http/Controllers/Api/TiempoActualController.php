@@ -16,12 +16,13 @@ class TiempoActualController extends Controller
     $ubicacionesSeparadas = explode(',', $ubicacion);
     $resultado = [];
     LOG::info($ubicacionesSeparadas);
+    $ubicacionesSeparadas = array_unique($ubicacionesSeparadas);
     foreach ($ubicacionesSeparadas as $ubicacion) {
         //return $ubicacion;
         $ubi = TiempoActual::find($ubicacion);
         //$resultado [] = $ubi;
         if(!$ubi){
-            return response()->json(['message'=>'error', 'codigo' => '500'], 500)->header('code', '500');
+            //return response()->json(['message'=>'error', 'codigo' => '500'], 500)->header('code', '500');
         }else{
             $resultado [] =[
                 'nombre' => $ubicacion,
