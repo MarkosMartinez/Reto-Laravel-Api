@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\UserController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Api\TiempoActualController;
 
 /*
@@ -30,3 +31,5 @@ Route::middleware('auth:api')->group( function () {
 Route::POST('comprobar-token', function () {
     return Auth::guard('api')->check() ? true : false;
 });
+
+Route::GET('obtener-las-ubicaciones', [TiempoActualController::class, 'obtenerUbicaciones']); 
