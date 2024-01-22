@@ -22,6 +22,7 @@ class TiempoActual extends Model
         'nombre',
         'temperatura',
         'temperatura_real',
+        'sensacion_termica',
         'humedad',
         'tiempo',
         'viento',
