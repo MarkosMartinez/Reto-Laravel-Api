@@ -20,7 +20,7 @@ class UserController extends Controller
 
     return response()->json([
         'success' => true,
-        'message' => 'Ubicaciones guardadas correctamente: '.$ubicaciones
+        'message' => 'Ubicaciones guardadas correctamente'
     ]);
 }
 
