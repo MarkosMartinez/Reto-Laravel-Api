@@ -29,6 +29,7 @@ class TiempoActualController extends Controller
                     'humedad' => $ubi->humedad,
                     'tiempo' => $ubi->tiempo,
                     'viento' => $ubi->viento,
+                    'presion' => $ubi->presion,
                     'latitud' => $ubi->latitud,
                     'longitud' => $ubi->longitud,
                     'ultima_actualizacion' => $ubi->ultima_actualizacion

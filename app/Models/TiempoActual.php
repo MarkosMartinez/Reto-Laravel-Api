@@ -26,6 +26,7 @@ class TiempoActual extends Model
         'humedad',
         'tiempo',
         'viento',
+        'presion',
         'latitud',
         'longitud',
     ];
