@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Api\TiempoActualController;
+use App\Http\Controllers\Api\TiempoAnteriorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,11 @@ Route::middleware('auth:api')->group( function () {
     Route::GET('tiempo-actual', [TiempoActualController::class, 'obtenerTiempo']);
     Route::POST('guardar-ubicaciones', [UserController::class, 'guardarUbicaciones']); 
     Route::GET('obtener-ubicaciones', [UserController::class, 'obtenerUbicaciones']); 
+    
 });
 Route::POST('comprobar-token', function () {
     return Auth::guard('api')->check() ? true : false;
 });
 
+Route::GET('historico-tiempo', [TiempoAnteriorController::class, 'devolver_historico']);
 Route::GET('obtener-las-ubicaciones', [TiempoActualController::class, 'obtenerUbicaciones']); 
