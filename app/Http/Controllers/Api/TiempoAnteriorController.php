@@ -26,7 +26,7 @@ class TiempoAnteriorController extends Controller
 
         if ($diferenciaMeses >= 4) {
             $temperaturas = TiempoAnterior::whereBetween('fecha', [$fechaInicio, $fechaFin])
-            ->groupBy(DB::raw('DATE_FORMAT(fecha, "%Y-%m-01")'), "nombre") // Agrupar por año y mes
+            ->groupBy(DB::raw('DATE_FORMAT(fecha, "%Y-%m-01")'), "nombre")
             ->select("nombre", DB::raw('ROUND(AVG(temperatura), 2) as temperatura'), DB::raw('DATE_FORMAT(fecha, "%Y-%m-01") as fecha'))
             ->get();
 
@@ -40,7 +40,7 @@ class TiempoAnteriorController extends Controller
                 ->groupBy("nombre", DB::raw('DATE_FORMAT(fecha, "%Y-%m-%d 00:00")'))
                 ->select("nombre", DB::raw('ROUND(AVG(temperatura), 2) as temperatura'), DB::raw('DATE_FORMAT(MIN(fecha), "%Y-%m-%d %H:%i") as fecha'))
                 ->get();
-        } elseif ($diferenciaHoras >= 2) {
+        } elseif ($diferenciaHoras > 2) {
             $temperaturas = TiempoAnterior::whereBetween('fecha', [$fechaInicio, $fechaFin])
                 ->groupBy("nombre", DB::raw('DATE_FORMAT(fecha, "%Y-%m-%d %H:00")'))
                 ->select("nombre", DB::raw('ROUND(AVG(temperatura), 2) as temperatura'), DB::raw('DATE_FORMAT(MIN(fecha), "%Y-%m-%d %H:%i") as fecha'))
