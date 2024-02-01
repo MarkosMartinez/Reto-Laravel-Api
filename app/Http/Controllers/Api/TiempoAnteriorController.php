@@ -48,7 +48,7 @@ class TiempoAnteriorController extends Controller
         } else {
             // Consulta para devolver los registros cada 15 minutos (predeterminado)
             $temperaturas = TiempoAnterior::whereBetween('fecha', [$fechaInicio, $fechaFin])
-                ->select('Nombre', 'temperatura', 'fecha')
+                ->select('nombre', 'temperatura', 'fecha')
                 ->get();
         }
 
