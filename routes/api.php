@@ -28,11 +28,10 @@ Route::middleware('auth:api')->group( function () {
     Route::GET('tiempo-actual', [TiempoActualController::class, 'obtenerTiempo']);
     Route::POST('guardar-ubicaciones', [UserController::class, 'guardarUbicaciones']); 
     Route::GET('obtener-ubicaciones', [UserController::class, 'obtenerUbicaciones']); 
-    
+    Route::GET('historico-tiempo', [TiempoAnteriorController::class, 'devolver_historico']);    
 });
 Route::POST('comprobar-token', function () {
     return Auth::guard('api')->check() ? true : false;
 });
 
-Route::GET('historico-tiempo', [TiempoAnteriorController::class, 'devolver_historico']);
 Route::GET('obtener-las-ubicaciones', [TiempoActualController::class, 'obtenerUbicaciones']); 
